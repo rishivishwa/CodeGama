@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[ApiViewModel::class.java]
         viewModel?.categories?.observe(this) { apiData ->
             Log.d("#DATAAPI","$apiData")
-            Toast.makeText(this, "${apiData}", Toast.LENGTH_SHORT).show()
             binding.audioListRecyclear.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
             val adapterAudio = CategoryAdapter(apiData, this,::onSelectedCategory)
             binding.audioListRecyclear.adapter = adapterAudio
