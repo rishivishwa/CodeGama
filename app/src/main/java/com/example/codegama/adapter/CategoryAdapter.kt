@@ -9,12 +9,12 @@ import com.example.codegama.databinding.CatTypeBinding
 
 
 
-class RecruiterOfferAdapter (
+class CategoryAdapter (
     private val items: List<ProductCategory>?,
     private val context: Context?,
     private val clickListenerCallback:(name : String) -> Unit
 ) :
-    RecyclerView.Adapter<RecruiterOfferAdapter.ViewHolder>() {
+    RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = CatTypeBinding.inflate(LayoutInflater.from(parent.context), parent, false)

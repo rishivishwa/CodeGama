@@ -6,14 +6,13 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.codegama.adapter.ItemAdapter
-import com.example.codegama.adapter.RecruiterOfferAdapter
+import com.example.codegama.adapter.CategoryAdapter
 import com.example.codegama.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("#DATAAPI","$apiData")
             Toast.makeText(this, "${apiData}", Toast.LENGTH_SHORT).show()
             binding.audioListRecyclear.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-            val adapterAudio = RecruiterOfferAdapter(apiData, this,::onSelectedCategory)
+            val adapterAudio = CategoryAdapter(apiData, this,::onSelectedCategory)
             binding.audioListRecyclear.adapter = adapterAudio
 
             viewModel?.sendDataToApi(apiData[0].name)
