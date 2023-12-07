@@ -3,5 +3,8 @@
     <style name="Base.Theme.CodeGama" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimaryDarkMode</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkMode</item>
+        <item name="colorAccent">@color/colorAccentDarkMode</item>
     </style>
 </resources>

@@ -26,23 +26,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window.setFlags( WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
-
-
         binding.addNightMode.setOnCheckedChangeListener { compound, isChecked ->
             if (isChecked) {
-                // Night mode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                toggleDayNightMode()
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
                 // Day mode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                toggleDayNightMode()
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
            // Apply the new mode without restarting the app
-            recreate()
-            delegate.applyDayNight()
+//            recreate()
+//            delegate.applyDayNight()
         }
-
-
-
 
 
         viewModel = ViewModelProvider(this)[ApiViewModel::class.java]
@@ -94,6 +90,18 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    fun toggleDayNightMode() {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        val newNightMode = when (currentNightMode) {
+            Configuration.UI_MODE_NIGHT_YES -> AppCompatDelegate.MODE_NIGHT_NO
+            Configuration.UI_MODE_NIGHT_NO -> AppCompatDelegate.MODE_NIGHT_YES
+            else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        }
+
+        AppCompatDelegate.setDefaultNightMode(newNightMode)
+        recreate() // Recreate the activity to apply the new theme
     }
     fun filterList(query: String) {
         val filteredList = originalItemList.filter { item ->
