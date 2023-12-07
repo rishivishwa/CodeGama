@@ -1,16 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+    <!-- Base light theme -->
     <style name="Base.Theme.CodeGama" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <!-- Custom light theme -->
     <style name="Theme.CodeGama" parent="Base.Theme.CodeGama" />
 
-<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!-- Base dark theme -->
+<!--    <style name="Base.Theme.CodeGama.Dark" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        <item name="colorPrimary">@color/colorPrimaryDarkMode</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDarkMode</item>-->
+<!--        <item name="colorAccent">@color/colorAccentDarkMode</item>-->
+<!--    </style>-->
+
+<!--    &lt;!&ndash; Custom dark theme &ndash;&gt;-->
+<!--    <style name="Theme.CodeGama.Dark" parent="Base.Theme.CodeGama.Dark" />-->
+
+    <!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
 <!--        &lt;!&ndash; Light mode theme &ndash;&gt;-->
 <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
 <!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->

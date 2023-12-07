@@ -2,6 +2,7 @@ package com.example.codegama
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.codegama.adapter.ItemAdapter
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setTheme(R.style.Theme_CodeGama)
         setContentView(binding.root)
         window.setFlags( WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         binding.addNightMode.setOnCheckedChangeListener { compound, isChecked ->
@@ -101,7 +104,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         AppCompatDelegate.setDefaultNightMode(newNightMode)
-        recreate() // Recreate the activity to apply the new theme
+        delegate.applyDayNight() // Apply the new theme without recreating the activity
+        val rootView = window.decorView.rootView
+        rootView.setBackgroundColor(
+            if (newNightMode == AppCompatDelegate.MODE_NIGHT_YES)
+                ContextCompat.getColor(this, R.color.white)
+            else
+                ContextCompat.getColor(this, R.color.black)
+        )
     }
     fun filterList(query: String) {
         val filteredList = originalItemList.filter { item ->
